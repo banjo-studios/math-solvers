@@ -9,11 +9,14 @@ def main():
         try:
             args[args.index(_)] = int(_)
         except ValueError:
-            print(f"Invalid value '{_}' which is an integer")
+            print(f"Invalid value '{_}' which is not an integer")
             exit()
 
-    if len(args) <= 3:
-        print("No values/less than 4 were inputted")
+    if len(args) < 4:
+        print("No values/less than 4 value(s) were inputted")
+        exit()
+    elif len(args) > 4:
+        print("More than 4 value(s) were inputted")
         exit()
 
     try:
@@ -21,7 +24,11 @@ def main():
     except ZeroDivisionError:
         print("Error: The provided values cannot be computed as it computes 0/0")
         exit()
-    print(f"Gradient:\n((y2-y1)/(x2-x1)): ({args[3]}-{args[1]})/({args[2]}-{args[0]}) = {m}")
+    output = f"Gradient:\n((y2-y1)/(x2-x1)): ({args[3]}-{args[1]})/({args[2]}-{args[0]}) = {m}"
+    output = output.replace("+-", "-")
+    output = output.replace("--", "+")
+    output = output.replace("-+", "-")
+    print(output)
     c = (-(m * args[0])) + args[1]
     print(
         f"Find Y-intercept:\n(y=mx+c): {args[1]}={m}x+c\n(c=-mx+y): c=-{m}x+{args[1]}\n(c=-mx+y): c=-({m}x{args[0]})+{args[1]}=-{m * args[0]}+{args[1]}={c}")
