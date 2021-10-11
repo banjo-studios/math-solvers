@@ -1,4 +1,6 @@
-import sys, math
+import sys
+from utils.sqrt import sqrt
+from utils.fabs import fabs
 
 
 def main():
@@ -55,7 +57,7 @@ def main():
     print(output)
 
     if args[0] == 1:
-        factors = [(i, int(c / i)) for i in range(1, int(math.sqrt(math.fabs(c))) + 1) if c % i == 0]
+        factors = [(i, int(c / i)) for i in range(1, int(sqrt(fabs(c))) + 1) if c % i == 0]
         print(f"Find factor pairs of c:\n{factors}")
 
     # See if any factor pairs can match up to make centre value
