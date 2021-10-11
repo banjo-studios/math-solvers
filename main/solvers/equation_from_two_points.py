@@ -9,12 +9,18 @@ def main():
         try:
             args[args.index(_)] = int(_)
         except ValueError:
-            raise ValueError(f"Invalid value '{_}' which is not an integer")
+            print(f"Invalid value '{_}' which is an integer")
+            exit()
 
-    if len(args) == 0:
-        raise ValueError("No inputted values")
+    if len(args) <= 3:
+        print("No values/less than 4 were inputted")
+        exit()
 
-    m = (args[3] - args[1]) / (args[2] - args[0])
+    try:
+        m = (args[3] - args[1]) / (args[2] - args[0])
+    except ZeroDivisionError:
+        print("Error: The provided values cannot be computed as it computes 0/0")
+        exit()
     print(f"Gradient:\n((y2-y1)/(x2-x1)): ({args[3]}-{args[1]})/({args[2]}-{args[0]}) = {m}")
     c = (-(m * args[0])) + args[1]
     print(
