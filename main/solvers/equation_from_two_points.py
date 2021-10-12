@@ -24,6 +24,7 @@ def main():
     except ZeroDivisionError:
         print("Error: The provided values cannot be computed as it computes 0/0")
         exit()
+    print(f"Input:\nEquation of ({args[0]}, {args[1]}) ({args[2]}, {args[3]})")
     output = f"Gradient:\n((y2-y1)/(x2-x1)): ({args[3]}-{args[1]})/({args[2]}-{args[0]}) = {m}"
     output = output.replace("+-", "-")
     output = output.replace("--", "+")
