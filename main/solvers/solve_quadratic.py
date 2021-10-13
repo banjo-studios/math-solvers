@@ -25,42 +25,51 @@ def main():
     b = args[1]
     c = args[2]
 
-    equation = ""
     if a == 1:
         a_display = "x²"
-    elif a == 0:
-        print("x² value cannot be zero!")
-        exit()
     elif a == -1:
         a_display = "-x²"
+    elif a == 0:
+        print("a value cannot be 0")
+        exit()
     else:
         a_display = str(a) + "x²"
-    equation += (a_display + "+")
 
     if b == 1:
         b_display = "x"
-        equation += b_display
-    elif b == 0:
-        b_display = ""
     elif b == -1:
         b_display = "-x"
-        equation += b_display
+    elif b == 0:
+        b_display = str(b)
     else:
         b_display = str(b) + "x"
-        equation += (b_display + "+")
-    equation += str(c)
 
-    output = f"Input:\n(ax²+bx+c): {equation}"
+
+    output = f"Input:\n{a_display}+{b_display}+{c}"
     output = output.replace("+-", "-")
     output = output.replace("--", "+")
     output = output.replace("-+", "-")
     print(output)
 
-    if args[0] == 1:
-        factors = [(i, int(c / i)) for i in range(1, int(sqrt(fabs(c))) + 1) if c % i == 0]
-        print(f"Find factor pairs of c:\n{factors}")
+    b_squared = b ** 2
+    four_a_c = 4 * a * c
+    if b_squared - four_a_c < 0:
+        __ = (b_squared - four_a_c) - ((b_squared - four_a_c) * 2)
+    else:
+        __ = (b_squared - four_a_c)
 
-    # See if any factor pairs can match up to make centre value
+    top_sqrt = sqrt(__)
+
+    top_pos = (-b) + top_sqrt
+    top_neg = (-b) - top_sqrt
+    two_a = 2 * a
+    output = f"Substitution:\n(-{b}+sqrt({b}^2-4({a})({c}))/2({a})"
+    output = output.replace("+-", "-")
+    output = output.replace("--", "+")
+    output = output.replace("-+", "-")
+    print(output)
+
+    print("Roots:\n" + str((top_pos/two_a)) + ", " + str(top_neg/two_a))
 
 
 if __name__ == "__main__":
